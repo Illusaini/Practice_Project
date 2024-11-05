@@ -1,0 +1,33 @@
+const data = [
+    {
+      name: "Jack",
+      age: 20,
+      marks: 85,
+      subject: "Mathematics"
+    },
+    {
+      name: "Bob",
+      age: 22,
+      marks: 78,
+      subject: "Physics"
+    },
+    {
+      name: "Nav",
+      age: 21,
+      marks: 92,
+      subject: "Chemistry"
+    },
+    {
+      name: "Illu",
+      age: 23,
+      marks: 88,
+      subject: "Biology"
+    },
+    {
+      name: "Eva",
+      age: 19,
+      marks: 95,
+      subject: "Computer Science"
+    }
+];
+  
