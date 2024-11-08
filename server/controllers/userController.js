@@ -53,8 +53,7 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     // Static token generation (for example purpose)
-    const token = "static_token_for_user"; // Replace with actual logic for generating token
-
+    const token = "static_token_for_user"; 
     res.json({ message: "Login successful", token });
 });
 

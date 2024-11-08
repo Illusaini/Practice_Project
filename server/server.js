@@ -42,6 +42,7 @@ app.get('/allusers', (req, res) => {
 
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/user", userRoutes);  
+app.use("/api/registerDoctor", require("./routes/doctorsDetails"));
 
 app.use(errorHandler);
 const storage = multer.diskStorage({
@@ -93,11 +94,6 @@ app.post('/profile', upload.single('avatar'), function (req, res, next) {
     console.log(req.file);
     return res.redirect("/home");
   })
-
-
-
-
-app.use("/api/registerDoctor", require("./routes/doctorsDetails"));
 
 app.listen(port, () => {
     console.log(`Server running on port http://localhost:${port}`);
