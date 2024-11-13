@@ -1,37 +1,17 @@
 const express = require("express");
+const User = require("../model/userModel");
 const router = express.Router();
-const jwtAuthMiddleware = require("../middlewares/jwtMiddleware").validateJwtToken;
-const {
-    registerUser,
-    loginUser
-} = require("../controllers/userController");
+const { registerUser, loginUser, myAccount, updateUser } = require("../controllers/userController");
+const { validateToken } = require("../middlewares/jwtMiddleware");
 
-const myAccount=async(req,res)=>{
-    try{
-        const userId=req.user.id;
-        const user=await getUserById(userId);
 
-        if(!user){
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.json({
-            id: user._id,
-            name: user.name,
-            email: user.email,
-        });
-    } 
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server error" });
-    }
-}
 
-// Route to register a user
-router.post("/", registerUser);
 
-// Route to login a user 
+
+// Routes
+router.post("/register", registerUser);
 router.post("/login", loginUser);
-
-router.get("/myaccount",jwtAuthMiddleware,myAccount);
+router.get("/details", validateToken, myAccount); 
+router.put("/details", validateToken, updateUser); 
 
 module.exports = router;
